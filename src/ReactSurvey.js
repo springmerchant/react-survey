@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
-import "./ReactSurvey.css";
+import style from "./styles";
 
 class ReactSurvey extends Component {
   constructor(props) {
@@ -129,7 +129,7 @@ class ReactSurvey extends Component {
   }
 
   closeSurvey() {
-    document.getElementById("rs-parent").classList.add("hidden");
+    document.getElementById("rs-parent").style = styles.hiddenStyle;
     localStorage.setItem("surveyDone", "true");
   }
 
@@ -140,14 +140,16 @@ class ReactSurvey extends Component {
 
     if (this.state.globalErrorMessage) {
       return (
-        <div className="rs globalError">
+        <div style={styles.boxStyle}>
           {this.state.globalErrorMessage}
         </div>
       );
     }
+
+    const boxPlusFoldStyle = { ...styles.boxStyle, ...styles.foldedStyle };
     return (
-      <div id="rs-parent" className={this.state.hidden ? "hidden" : ""}>
-        <div className={`rs ${this.state.folded ? "folded" : ""}`}>
+      <div id="rs-parent">
+        <div style={this.state.folded ? boxPlusFoldStyle : styles.boxStyle}>
           <div className="heading">
             <DisplayButtons
               foldSurvey={this.foldSurvey}
@@ -302,7 +304,7 @@ class Question extends Component {
 
 const DisplayButtons = props => {
   return (
-    <div className="display-buttons">
+    <div styles={styles.displayButtonsStyle}>
       {props.folded
         ? <button onClick={props.unfoldSurvey}>+</button>
         : <button onClick={props.foldSurvey}>-</button>}
