@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
-import styles from "./styles";
+import { styles } from "./styles";
 
 class ReactSurvey extends Component {
   constructor(props) {
