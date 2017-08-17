@@ -97,14 +97,6 @@ class ReactSurvey extends Component {
       globalLoading: true,
     });
 
-    // REMOVE
-    return setInterval(() => {
-      this.setState({
-        displayGoodbyeMessage: true,
-        globalLoading: false,
-      });
-    }, 1000);
-    // eslint-disable-next-line
     request
       .post(this.props.data.postUrl)
       .send({
@@ -304,7 +296,7 @@ class Question extends Component {
 
 const DisplayButtons = props => {
   return (
-    <div styles={styles.displayButtonsStyle}>
+    <div style={styles.displayButtonsStyle}>
       {props.folded
         ? <button onClick={props.unfoldSurvey}>+</button>
         : <button onClick={props.foldSurvey}>-</button>}
