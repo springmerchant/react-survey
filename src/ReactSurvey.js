@@ -98,6 +98,7 @@ class ReactSurvey extends Component {
       email,
       comment,
       answers: this.state.answers,
+      id: this.props.data.id,
     };
     this.setState({
       globalLoading: true,
@@ -134,6 +135,10 @@ class ReactSurvey extends Component {
 
   render() {
     console.log(this.state);
+
+    if (JSON.parse(localStorage.getItem("surveyDone"))) {
+      return;
+    }
 
     localStorage.setItem("surveyState", JSON.stringify(this.state));
 
