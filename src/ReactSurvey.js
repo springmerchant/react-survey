@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import request from "superagent";
 import { styles } from "./styles";
 
+// TODO send survey id to enable multiple surveys on the same site
+// TODO allow deactivation of localstorage (this can be done on the server)
+// TODO clean first level props structure (no `data`)
+// TODO allow styles overwrite
+// TODO make radio/checkbox text clickable
+
 class ReactSurvey extends Component {
   constructor(props) {
     super(props);
@@ -121,7 +127,8 @@ class ReactSurvey extends Component {
   }
 
   closeSurvey() {
-    document.getElementById("rs-parent").style = styles.hiddenStyle;
+    document.getElementById("rs-parent").style.display =
+      styles.hiddenStyle.display;
     localStorage.setItem("surveyDone", "true");
   }
 
@@ -203,11 +210,11 @@ const End = props => {
         }}
       >
         {freeSpeech
-          ? <textarea onClick={e => (comment = e.target.value)} />
+          ? <textarea onChange={e => (comment = e.target.value)} />
           : ""}
         {email
           ? <input
-              onClick={e => (userEmail = e.target.value)}
+              onChange={e => (userEmail = e.target.value)}
               placeholder="email"
             />
           : ""}
