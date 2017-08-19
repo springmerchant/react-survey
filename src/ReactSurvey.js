@@ -262,9 +262,9 @@ class Question extends Component {
                 <div key={i}>
                   <input
                     className="choice"
-                    name={`question-${id}`}
+                    data-question-id={id}
                     type={multiple ? "checkbox" : "radio"}
-                    value={c.toLowerCase()}
+                    value={c.id}
                     onClick={e => {
                       const answer = e.target.value;
                       if (answers.includes(answer)) {
@@ -275,7 +275,7 @@ class Question extends Component {
                     }}
                   />
                   <span>
-                    {c}
+                    {c.text}
                   </span>
                 </div>
               )
