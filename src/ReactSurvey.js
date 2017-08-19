@@ -137,7 +137,7 @@ class ReactSurvey extends Component {
     console.log(this.state);
 
     if (JSON.parse(localStorage.getItem("surveyDone"))) {
-      return;
+      return <div style={styles.hiddenStyle} />;
     }
 
     localStorage.setItem("surveyState", JSON.stringify(this.state));
