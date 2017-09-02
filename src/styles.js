@@ -35,6 +35,7 @@ const styles = {
     marginBottom: "2px",
   },
   foldedStyle: {
+    minHeight: "20px",
     height: "20px",
     overflow: "hidden",
   },

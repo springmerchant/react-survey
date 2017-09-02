@@ -146,6 +146,7 @@ class ReactSurvey extends Component {
     }
 
     const boxPlusFoldStyle = { ...styles.boxStyle, ...styles.foldedStyle };
+    console.log(boxPlusFoldStyle);
     return (
       <div id="rs-parent">
         <div style={this.state.folded ? boxPlusFoldStyle : styles.boxStyle}>
