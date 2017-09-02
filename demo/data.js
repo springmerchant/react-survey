@@ -1,7 +1,7 @@
 const fakeSurvey = {
   name: "Enquete de satisfaction",
   random: true,
-  timeBeforePopUp: 0, // in seconds
+  timeBeforePopUp: 5, // in seconds
   postUrl: "http://localhost:4000/survey",
   questions: [
     {
