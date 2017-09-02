@@ -1,11 +1,13 @@
 {
   "name": "react-survey",
-  "version": "1.0.13",
-  "description": "A small but powerful component to make unobstrusive survey pup-up",
+  "version": "1.0.14",
+  "description":
+    "A small but powerful component to make unobstrusive survey pup-up",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "watch": "babel src --watch -d lib"
+    "watch": "babel src --watch -d lib",
+    "precommit": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "husky": "^0.14.3"
   }
 }

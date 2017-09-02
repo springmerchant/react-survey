@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import request from "superagent";
 import { styles } from "./styles";
 
-// TODO send survey id to enable multiple surveys on the same site
-// TODO allow deactivation of localstorage (this can be done on the server)
+// TODO allow deactivation of localstorage (for dev)
 // TODO clean first level props structure (no `data`)
-// TODO allow styles overwrite
+// TODO allow styles overwride
 // TODO make radio/checkbox text clickable
 
 class ReactSurvey extends Component {
@@ -143,11 +142,7 @@ class ReactSurvey extends Component {
     localStorage.setItem("surveyState", JSON.stringify(this.state));
 
     if (this.state.globalErrorMessage) {
-      return (
-        <div style={styles.boxStyle}>
-          {this.state.globalErrorMessage}
-        </div>
-      );
+      return <div style={styles.boxStyle}>{this.state.globalErrorMessage}</div>;
     }
 
     const boxPlusFoldStyle = { ...styles.boxStyle, ...styles.foldedStyle };
@@ -160,37 +155,37 @@ class ReactSurvey extends Component {
               unfoldSurvey={this.unfoldSurvey}
               folded={this.state.folded}
             />
-            <p className="title">
-              {this.props.data.name}
-            </p>
+            <p className="title">{this.props.data.name}</p>
             <p>
-              {this.state.displayWelcomeMessage
-                ? this.props.data.messages.welcomeMessage
-                : ""}
+              {this.state.displayWelcomeMessage ? (
+                this.props.data.messages.welcomeMessage
+              ) : (
+                ""
+              )}
             </p>
           </div>
-          {this.state.globalLoading
-            ? <p>Loading</p>
-            : this.state.displayGoodbyeMessage
-              ? <div>
-                  <p>
-                    {this.props.data.messages.endingMessage}
-                  </p>
-                  <button onClick={this.closeSurvey}>
-                    {this.props.data.messages.closeMessage}
-                  </button>
-                </div>
-              : this.state.ended
-                ? <End
-                    data={this.props.data.ending}
-                    onSubmit={this.endSurvey}
-                    messages={this.props.data.messages}
-                  />
-                : <Question
-                    data={this.state.currentQuestion || {}}
-                    onSubmit={this.answerQuestion}
-                    messages={this.props.data.messages}
-                  />}
+          {this.state.globalLoading ? (
+            <p>Loading</p>
+          ) : this.state.displayGoodbyeMessage ? (
+            <div>
+              <p>{this.props.data.messages.endingMessage}</p>
+              <button onClick={this.closeSurvey}>
+                {this.props.data.messages.closeMessage}
+              </button>
+            </div>
+          ) : this.state.ended ? (
+            <End
+              data={this.props.data.ending}
+              onSubmit={this.endSurvey}
+              messages={this.props.data.messages}
+            />
+          ) : (
+            <Question
+              data={this.state.currentQuestion || {}}
+              onSubmit={this.answerQuestion}
+              messages={this.props.data.messages}
+            />
+          )}
         </div>
       </div>
     );
@@ -202,9 +197,7 @@ const End = props => {
   let comment, userEmail;
   return (
     <div>
-      <p>
-        {text}
-      </p>
+      <p>{text}</p>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -214,18 +207,20 @@ const End = props => {
           });
         }}
       >
-        {freeSpeech
-          ? <textarea onChange={e => (comment = e.target.value)} />
-          : ""}
-        {email
-          ? <input
-              onChange={e => (userEmail = e.target.value)}
-              placeholder="email"
-            />
-          : ""}
-        <button type="submit">
-          {props.messages.endMessage}
-        </button>
+        {freeSpeech ? (
+          <textarea onChange={e => (comment = e.target.value)} />
+        ) : (
+          ""
+        )}
+        {email ? (
+          <input
+            onChange={e => (userEmail = e.target.value)}
+            placeholder="email"
+          />
+        ) : (
+          ""
+        )}
+        <button type="submit">{props.messages.endMessage}</button>
       </form>
     </div>
   );
@@ -245,9 +240,7 @@ class Question extends Component {
     let answers = [];
     return (
       <div className="question">
-        <p>
-          {text}
-        </p>
+        <p>{text}</p>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -269,37 +262,31 @@ class Question extends Component {
             });
           }}
         >
-          {choices
-            ? choices.map((c, i) =>
-                <div key={i}>
-                  <input
-                    className="choice"
-                    data-question-id={id}
-                    type={multiple ? "checkbox" : "radio"}
-                    value={c.id}
-                    onClick={e => {
-                      const answer = e.target.value;
-                      if (answers.includes(answer)) {
-                        answers.filter(a => a !== e.target.value);
-                      } else {
-                        answers.push(answer);
-                      }
-                    }}
-                  />
-                  <span>
-                    {c.text}
-                  </span>
-                </div>
-              )
-            : []}
-          <button type="submit">
-            {this.props.messages.nextMessage}
-          </button>
-          {this.state.error
-            ? <p>
-                {this.props.messages.errorMessage}
-              </p>
-            : ""}
+          {choices ? (
+            choices.map((c, i) => (
+              <div key={i}>
+                <input
+                  className="choice"
+                  data-question-id={id}
+                  type={multiple ? "checkbox" : "radio"}
+                  value={c.id}
+                  onClick={e => {
+                    const answer = e.target.value;
+                    if (answers.includes(answer)) {
+                      answers.filter(a => a !== e.target.value);
+                    } else {
+                      answers.push(answer);
+                    }
+                  }}
+                />
+                <span>{c.text}</span>
+              </div>
+            ))
+          ) : (
+            []
+          )}
+          <button type="submit">{this.props.messages.nextMessage}</button>
+          {this.state.error ? <p>{this.props.messages.errorMessage}</p> : ""}
         </form>
       </div>
     );
@@ -309,9 +296,11 @@ class Question extends Component {
 const DisplayButtons = props => {
   return (
     <div style={styles.displayButtonsStyle}>
-      {props.folded
-        ? <button onClick={props.unfoldSurvey}>+</button>
-        : <button onClick={props.foldSurvey}>-</button>}
+      {props.folded ? (
+        <button onClick={props.unfoldSurvey}>+</button>
+      ) : (
+        <button onClick={props.foldSurvey}>-</button>
+      )}
     </div>
   );
 };
