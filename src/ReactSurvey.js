@@ -149,20 +149,20 @@ class ReactSurvey extends Component {
     return (
       <div id="rs-parent">
         <div style={this.state.folded ? boxPlusFoldStyle : styles.boxStyle}>
-          <div className="heading">
+          <div className="heading" style={styles.heading}>
             <DisplayButtons
               foldSurvey={this.foldSurvey}
               unfoldSurvey={this.unfoldSurvey}
               folded={this.state.folded}
             />
-            <p className="title">{this.props.data.name}</p>
-            <p>
-              {this.state.displayWelcomeMessage ? (
-                this.props.data.messages.welcomeMessage
-              ) : (
-                ""
-              )}
+            <p className="title" style={styles.heading.title}>
+              {this.props.data.name}
             </p>
+            {this.state.displayWelcomeMessage ? (
+              <p className="description" style={styles.heading.description}>
+                {this.props.data.messages.welcomeMessage}
+              </p>
+            ) : null}
           </div>
           {this.state.globalLoading ? (
             <p>Loading</p>
@@ -240,7 +240,9 @@ class Question extends Component {
     let answers = [];
     return (
       <div className="question">
-        <p>{text}</p>
+        <p className="question-text" style={styles.question.text}>
+          {text}
+        </p>
         <form
           onSubmit={e => {
             e.preventDefault();
