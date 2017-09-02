@@ -1,12 +1,22 @@
 const fakeSurvey = {
   name: "Enquete de satisfaction",
+  id: 1,
   random: true,
   timeBeforePopUp: 5, // in seconds
-  postUrl: "http://localhost:4000/survey",
+  postUrl: "http://localhost:3000/surveys/1/participations",
   questions: [
     {
       text: "Etes-vous satisfait du site pour l'instant ?",
-      choices: ["oui", "non"],
+      choices: [
+        {
+          text: "oui",
+          id: 1,
+        },
+        {
+          text: "non",
+          id: 2,
+        },
+      ],
       multiple: false,
       id: 1,
       required: true,
@@ -14,7 +24,16 @@ const fakeSurvey = {
     {
       text:
         "Pensez vous que nous devrions mettre un 'paint' directement dans le site ?",
-      choices: ["oui", "non"],
+      choices: [
+        {
+          text: "oui",
+          id: 3,
+        },
+        {
+          text: "non",
+          id: 4,
+        },
+      ],
       multiple: false,
       id: 2,
       required: true,
@@ -23,9 +42,19 @@ const fakeSurvey = {
       text:
         "Quelle est la ou les prochaines fonctionnalités que vous aimeriez voir ?",
       choices: [
-        "des commentaires",
-        "d'autres media (son, video...)",
-        "un mode donjon et dragon (jet de dés qui definissent la prochaine image)",
+        {
+          text: "des commentaires",
+          id: 5,
+        },
+        {
+          text: "d'autres media (son, video...)",
+          id: 6,
+        },
+        {
+          text:
+            "un mode donjon et dragon (jet de dés qui definissent la prochaine image)",
+          id: 7,
+        },
       ],
       multiple: true,
       id: 3,
