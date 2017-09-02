@@ -2,7 +2,7 @@ const styles = {
   boxStyle: {
     width: "300px",
     height: "300px",
-    position: "absolute",
+    position: "fixed",
     bottom: "20px",
     right: "20px",
     border: "1px solid black",
