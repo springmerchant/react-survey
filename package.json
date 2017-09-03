@@ -1,8 +1,7 @@
 {
   "name": "react-survey",
-  "version": "1.3.3-pre",
-  "description":
-    "A small but powerful component to make unobstrusive survey pup-up",
+  "version": "1.3.3",
+  "description": "A small but powerful component to make unobstrusive survey pup-up",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -26,7 +25,11 @@
     "React",
     "react-component"
   ],
-  "tags": ["react", "survey", "component"],
+  "tags": [
+    "react",
+    "survey",
+    "component"
+  ],
   "author": "Balatzar",
   "license": "MIT",
   "bugs": {
