@@ -55,7 +55,7 @@ const styles = {
       fontWeight: "bolder",
       fontSize: "2em",
       lineHeight: "20px",
-      color: "#b7b7b7",
+      color: lightGray,
       overflow: "hidden",
     },
   },
