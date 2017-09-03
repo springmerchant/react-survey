@@ -1,9 +1,10 @@
 const lightBlue = "#6cdbdc";
+const lightGray = "#b7b7b7";
 
 const styles = {
   boxStyle: {
     width: "300px",
-    minHeight: "300px",
+    minHeight: "200px",
     position: "fixed",
     bottom: "20px",
     right: "20px",
@@ -31,8 +32,32 @@ const styles = {
       fontWeight: "bold",
     },
   },
-  displayButtonsStyle: {
-    marginBottom: "2px",
+  buttons: {
+    basic: {
+      padding: "5px 15px",
+      backgroundColor: "#fff",
+      borderRadius: "20px",
+      cursor: "pointor",
+    },
+    next: {
+      border: `1px solid ${lightGray}`,
+      margin: "0 auto",
+      display: "block",
+    },
+  },
+  displayControl: {
+    layout: {
+      marginBottom: "2px",
+    },
+    buttons: {
+      backgroundColor: "#fff",
+      border: `1px solid ${lightGray}`,
+      fontWeight: "bolder",
+      fontSize: "2em",
+      lineHeight: "20px",
+      color: "#b7b7b7",
+      overflow: "hidden",
+    },
   },
   foldedStyle: {
     minHeight: "20px",

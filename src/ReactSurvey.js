@@ -33,7 +33,6 @@ class ReactSurvey extends Component {
   componentWillMount() {
     const surveyDone = JSON.parse(localStorage.getItem("surveyDone"));
     const surveyState = JSON.parse(localStorage.getItem("surveyState"));
-    console.log(surveyState);
 
     if (!surveyDone) {
       if (surveyState && surveyState.answers.length) {
@@ -148,7 +147,7 @@ class ReactSurvey extends Component {
     const boxPlusFoldStyle = { ...styles.boxStyle, ...styles.foldedStyle };
     console.log(boxPlusFoldStyle);
     return (
-      <div id="rs-parent">
+      <div id="rs-parent" style={this.state.hidden ? styles.hiddenStyle : null}>
         <div style={this.state.folded ? boxPlusFoldStyle : styles.boxStyle}>
           <div className="heading" style={styles.heading}>
             <DisplayButtons
@@ -288,7 +287,12 @@ class Question extends Component {
           ) : (
             []
           )}
-          <button type="submit">{this.props.messages.nextMessage}</button>
+          <button
+            type="submit"
+            style={{ ...styles.buttons.basic, ...styles.buttons.next }}
+          >
+            {this.props.messages.nextMessage}
+          </button>
           {this.state.error ? <p>{this.props.messages.errorMessage}</p> : ""}
         </form>
       </div>
@@ -298,11 +302,21 @@ class Question extends Component {
 
 const DisplayButtons = props => {
   return (
-    <div style={styles.displayButtonsStyle}>
+    <div style={styles.displayControl.layout}>
       {props.folded ? (
-        <button onClick={props.unfoldSurvey}>+</button>
+        <button
+          style={styles.displayControl.buttons}
+          onClick={props.unfoldSurvey}
+        >
+          +
+        </button>
       ) : (
-        <button onClick={props.foldSurvey}>-</button>
+        <button
+          style={styles.displayControl.buttons}
+          onClick={props.foldSurvey}
+        >
+          -
+        </button>
       )}
     </div>
   );
