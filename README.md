@@ -93,7 +93,9 @@ const fakeSurvey = {
   ],
   ending: {
     text:
-      "Thank your for your answers! You can leave you email if you would like to maybe be contacted to answer some questions and help us. You can also write any comment you might have in the box below.",
+      `Thank your for your answers!
+      You can leave you email if you would like to maybe be contacted to answer some questions and help us.
+      You can also write any comment you might have in the box below.`,
     email: true,
     freeSpeech: true,
   },
