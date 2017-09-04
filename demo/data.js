@@ -26,11 +26,11 @@ const fakeSurvey = {
         "Do you think we should make a vanilla JS version of this component?",
       choices: [
         {
-          text: "oui",
+          text: "Yes",
           id: 3,
         },
         {
-          text: "non",
+          text: "No",
           id: 4,
         },
       ],
