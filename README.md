@@ -8,7 +8,7 @@ React-Survey is a React component to add user-friendly, unobstrusive surveys to 
 
 ## Live DEMO
 
-Check a live Demo here http://react-survey.surge.sh/
+Check a live Demo [here](https://react-survey.surge.sh/)
 
 
 ## Who uses React-Survey
