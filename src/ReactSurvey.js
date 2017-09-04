@@ -142,7 +142,7 @@ class ReactSurvey extends Component {
 
     if (this.state.globalErrorMessage) {
       return (
-        <div style={styles.boxStyle}>
+        <div id="rs-parent" style={styles.boxStyle}>
           <p>{this.state.globalErrorMessage}</p>
           <EndButton
             onClick={this.closeSurvey}
