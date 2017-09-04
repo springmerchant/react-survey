@@ -1,14 +1,14 @@
 {
   "name": "react-survey",
   "version": "1.5.1-pre",
-  "description": "A small but powerful component to make unobstrusive survey pup-up",
+  "description":
+    "A small but powerful component to make unobstrusive survey pup-up",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack-dev-server",
     "webpack": "webpack",
     "build": "babel src -d lib",
     "watch": "babel src --watch -d lib",
-    "custom-publish": "sh ./scripts/publish-script.sh",
     "build:html": "node ./scripts/compileMdToHtml.js",
     "publish:website": "sh ./scripts/website-publish.sh"
   },
@@ -25,11 +25,7 @@
     "React",
     "react-component"
   ],
-  "tags": [
-    "react",
-    "survey",
-    "component"
-  ],
+  "tags": ["react", "survey", "component"],
   "author": "Balatzar",
   "license": "MIT",
   "bugs": {

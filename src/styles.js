@@ -60,8 +60,8 @@ const styles = {
     },
   },
   foldedStyle: {
-    minHeight: "40px",
-    height: "20px",
+    minHeight: "50px",
+    height: "50px",
     overflow: "hidden",
   },
   hiddenStyle: {
