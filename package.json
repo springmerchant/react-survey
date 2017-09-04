@@ -1,6 +1,6 @@
 {
   "name": "react-survey",
-  "version": "1.5.0",
+  "version": "1.5.1-pre",
   "description": "A small but powerful component to make unobstrusive survey pup-up",
   "main": "lib/index.js",
   "scripts": {
