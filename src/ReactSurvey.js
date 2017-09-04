@@ -141,7 +141,15 @@ class ReactSurvey extends Component {
     localStorage.setItem("surveyState", JSON.stringify(this.state));
 
     if (this.state.globalErrorMessage) {
-      return <div style={styles.boxStyle}>{this.state.globalErrorMessage}</div>;
+      return (
+        <div style={styles.boxStyle}>
+          <p>{this.state.globalErrorMessage}</p>
+          <EndButton
+            onClick={this.closeSurvey}
+            text={this.props.data.messages.closeMessage}
+          />
+        </div>
+      );
     }
 
     const boxPlusFoldStyle = { ...styles.boxStyle, ...styles.foldedStyle };
@@ -169,9 +177,10 @@ class ReactSurvey extends Component {
           ) : this.state.displayGoodbyeMessage ? (
             <div>
               <p>{this.props.data.messages.endingMessage}</p>
-              <button onClick={this.closeSurvey}>
-                {this.props.data.messages.closeMessage}
-              </button>
+              <EndButton
+                onClick={this.closeSurvey}
+                text={this.props.data.messages.closeMessage}
+              />
             </div>
           ) : this.state.ended ? (
             <End
@@ -191,6 +200,10 @@ class ReactSurvey extends Component {
     );
   }
 }
+
+const EndButton = props => {
+  return <button onClick={props.onClick}>{props.text}</button>;
+};
 
 const End = props => {
   const { text, email, freeSpeech } = props.data;
