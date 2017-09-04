@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
+import { CometSpinLoader } from "react-css-loaders";
 import { styles } from "./styles";
 
 // TODO allow deactivation of localstorage (for dev)
@@ -173,7 +174,7 @@ class ReactSurvey extends Component {
             ) : null}
           </div>
           {this.state.globalLoading ? (
-            <p>Loading</p>
+            <CometSpinLoader />
           ) : this.state.displayGoodbyeMessage ? (
             <div>
               <p>{this.props.data.messages.endingMessage}</p>
