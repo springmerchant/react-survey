@@ -3,9 +3,7 @@ const lightGray = "#b7b7b7";
 
 const styles = {
   boxStyle: {
-    width: "300px",
     minHeight: "200px",
-    position: "fixed",
     bottom: "20px",
     right: "20px",
     border: `2px solid ${lightBlue}`,
